@@ -4,5 +4,11 @@
   },
   "about.qmd": {
     "about.html": "f4783152"
+  },
+  "tidytuesday1.qmd": {
+    "tidytuesday1.html": "e924c07c"
+  },
+  "tidytuesday2.qmd": {
+    "tidytuesday2.html": "cc00e2bb"
   }
 }

@@ -9,6 +9,8 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
+      - tidyanalysis1.qmd
+      - tidyanalysis2.qmd
 
 format:
   html:
