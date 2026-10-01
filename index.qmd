@@ -10,8 +10,8 @@ about:
     - text: LinkedIn
       href: https://www.linkedin.com/in/celina-steinberg/
       target: _blank
-    - text: GitHub
-      href: https://github.com/CStein2000
+    - text: GitHub Repo (website)
+      href: https://github.com/CStein2000/CStein2000.github.io 
       target: _blank 
     - text: Email
       href: mailto:csteinbe@students.pitzer.edu

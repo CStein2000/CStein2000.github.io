@@ -1,5 +1,19 @@
 ---
-title: "tidy analysis 1"
+title: "tidy analysis 1 - Linguistic Analysis of Amazon's Annual reports"
+description: |
+    Analysis of Amazon Annual reports data from TidyTuesday. 
+author: Celina
+date: September 30, 2026
 format: html
+
+---
+```{r}
+install.packages("tidytuesdayR")
+
+tuesdata <- tidytuesdayR::tt_load('2025-03-25')
+
+```
+---
+
 ---
 

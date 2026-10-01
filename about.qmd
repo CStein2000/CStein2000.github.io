@@ -1,5 +1,9 @@
 ---
 title: "About"
----
 
-About this site
+about: 
+  template: jolla
+  links:
+    - text: GitHub Repo (website)
+      href: https://github.com/CStein2000/CStein2000.github.io
+---

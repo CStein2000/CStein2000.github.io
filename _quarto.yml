@@ -8,9 +8,14 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
-      - tidyanalysis1.qmd
-      - tidyanalysis2.qmd
+      - href: about.qmd
+        text: About
+      - text: Data Viz
+        menu: 
+        - href: tidyanalysis1.qmd
+          text: Tidy Analysis 1 
+        - href: tidyanalysis2.qmd
+          text: Tidy Analysis 2
 
 format:
   html:
