@@ -1,5 +1,5 @@
 ---
-title: "tidy analysis 1 - Linguistic Analysis of Amazon's Annual reports"
+title: "Linguistic Analysis of Amazon's Annual reports"
 description: |
     Analysis of Amazon Annual reports data from TidyTuesday. 
 author: Celina
@@ -7,13 +7,38 @@ date: September 30, 2026
 format: html
 
 ---
+
+## Amazon Anual Reports
+
+This analysis examines the linguistic patterns in Amazon's annual reports using data from TidyTuesday (2025-03-25). The data contains information about the usage of different words in the Amazon reports, and we will be investigating how the language has chanaged over time. We cannot make causal claims made from this dataset, but we will investigate cross-report word overlap. 
+
+
+## Full Citation
+
+
+#### Load data
 ```{r}
-install.packages("tidytuesdayR")
+report_words_clean <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-03-25/report_words_clean.csv')
 
-tuesdata <- tidytuesdayR::tt_load('2025-03-25')
-
+head(report_words_clean)
+names(report_words_clean)
+dplyr::glimpse(report_words_clean)
 ```
----
 
----
+#### Analysis: Count words and find top 10 most common words for 2005, 2015, and 2025
+```{r}
+word_counts <- report_words_clean |>
+dplyr::count(year, word, sort = TRUE)
 
+selected_years <- word_counts |>
+    dplyr::filter(year %in% c(2005, 2010, 2015, 2020))
+
+top_words <- selected_years |>
+    dplyr::group_by(year) |>
+    dplyr::slice_max(order_by = n, n = 10) |>
+    dplyr::ungroup()
+```
+
+#### 1 Plot: Illustrate Amazon's top 10 words across annual reports (5-year intervals)
+```{r}
+ggplot(top_words, aes(x = n,))
