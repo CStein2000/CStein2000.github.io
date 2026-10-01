@@ -39,7 +39,7 @@
     "href": "tidyanalysis1.html#full-citation",
     "title": "Linguistic Analysis of Amazon’s Annual Reports",
     "section": "Full Citation",
-    "text": "Full Citation\nTidyTuesday resource This data is taken from an upload to public TidyTuesday repository by Libby Heeren.\nOriginal source of data This data explores text data from Amazon’s annual reports, using pdf’s created by Gregory Vander Vinne, a TidyTuesday participant, in the post linked."
+    "text": "Full Citation\nTidyTuesday resource This data is taken from an upload to public TidyTuesday repository by Libby Heeren.\nOriginal data source This data explores text data from Amazon’s annual reports, using pdf’s created by Gregory Vander Vinne, a TidyTuesday participant, in the post linked."
   },
   {
     "objectID": "tidyanalysis1.html#amazon-annual-reports",
@@ -68,5 +68,26 @@
     "title": "About",
     "section": "Experience",
     "text": "Experience\nActive Minds, Pitzer College | Marketing Manager + Ambassador | Feb. 2026 - Present Pitzer Division of Student Affairs | Social Media Intern | Jan. 2026 - May 2026 The Outback Newsprint Magazine | Head Web Designer + Staff Editor | Dec. 2023 - Jul. 2025"
+  },
+  {
+    "objectID": "tidyanalysis2.html",
+    "href": "tidyanalysis2.html",
+    "title": "What Makes a Highly-Rated Cup of Coffee?",
+    "section": "",
+    "text": "This analysis examines coffee ratings based on data from TidyTuesday (2020-07-07). This is an older dataset that contains variables for various coffee characteristics, and in my analysis I will investigate which of these are most strongly correlated with a coffee’s overall rating.\n\n\n\ncoffee_ratings &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-07-07/coffee_ratings.csv')\n\n\n\n\n\ncoffee_characteristics &lt;- coffee_ratings |&gt;\n  dplyr::select(\n    total_cup_points,\n    aroma,\n    flavor,\n    aftertaste,\n    acidity,\n    body,\n    balance,\n    uniformity,\n    clean_cup,\n    sweetness,\n    cupper_points\n  )\n\n\ncorrelations &lt;- coffee_characteristics |&gt;\n  cor(use = \"complete.obs\") |&gt;\n  as.data.frame() |&gt;\n  dplyr::select(total_cup_points) |&gt;\n  dplyr::rename(correlation = total_cup_points) |&gt;\n  tibble::rownames_to_column(\"characteristic\") |&gt;\n  dplyr::filter(characteristic != \"total_cup_points\") |&gt;\n  dplyr::arrange(correlation)\n\n\n\n\n\nlibrary(ggplot2)\n\nggplot(\n  correlations,\n  aes(\n    x = correlation,\n    y = reorder(characteristic, correlation)\n  )\n) +\n  geom_col(fill = \"blue\") +\n  labs(\n    title = \"Which Characteristics Relate Most to Overall Coffee Rating (cupper points)?\",\n    subtitle = \"Correlation with total cupper points\",\n    x = \"Correlation with total cupper points\",\n    y = \"Coffee characteristic\"\n  ) +\n  theme_minimal()"
+  },
+  {
+    "objectID": "tidyanalysis2.html#coffee-ratings",
+    "href": "tidyanalysis2.html#coffee-ratings",
+    "title": "What Makes a Highly-Rated Cup of Coffee?",
+    "section": "",
+    "text": "This analysis examines coffee ratings based on data from TidyTuesday (2020-07-07). This is an older dataset that contains variables for various coffee characteristics, and in my analysis I will investigate which of these are most strongly correlated with a coffee’s overall rating.\n\n\n\ncoffee_ratings &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-07-07/coffee_ratings.csv')\n\n\n\n\n\ncoffee_characteristics &lt;- coffee_ratings |&gt;\n  dplyr::select(\n    total_cup_points,\n    aroma,\n    flavor,\n    aftertaste,\n    acidity,\n    body,\n    balance,\n    uniformity,\n    clean_cup,\n    sweetness,\n    cupper_points\n  )\n\n\ncorrelations &lt;- coffee_characteristics |&gt;\n  cor(use = \"complete.obs\") |&gt;\n  as.data.frame() |&gt;\n  dplyr::select(total_cup_points) |&gt;\n  dplyr::rename(correlation = total_cup_points) |&gt;\n  tibble::rownames_to_column(\"characteristic\") |&gt;\n  dplyr::filter(characteristic != \"total_cup_points\") |&gt;\n  dplyr::arrange(correlation)\n\n\n\n\n\nlibrary(ggplot2)\n\nggplot(\n  correlations,\n  aes(\n    x = correlation,\n    y = reorder(characteristic, correlation)\n  )\n) +\n  geom_col(fill = \"blue\") +\n  labs(\n    title = \"Which Characteristics Relate Most to Overall Coffee Rating (cupper points)?\",\n    subtitle = \"Correlation with total cupper points\",\n    x = \"Correlation with total cupper points\",\n    y = \"Coffee characteristic\"\n  ) +\n  theme_minimal()"
+  },
+  {
+    "objectID": "tidyanalysis2.html#complete-citations",
+    "href": "tidyanalysis2.html#complete-citations",
+    "title": "What Makes a Highly-Rated Cup of Coffee?",
+    "section": "Complete Citations",
+    "text": "Complete Citations\n[TidyTuesday resource]\n[Original data source]"
   }
 ]

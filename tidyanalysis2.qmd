@@ -1,10 +1,77 @@
 ---
-title: "tidy analysis 2"
+title: "What Makes a Highly-Rated Cup of Coffee?"
+description: |
+    Investigating which characteristics of coffee correlated most strongly with overall coffee ratings.
+author: Celina
+date: September 30, 2026
 format: html
+execute:
+  warning: false
+  message: false
 ---
-
+## Coffee Ratings
+This analysis examines coffee ratings based on data from TidyTuesday (2020-07-07). This is an older dataset that contains variables for various coffee characteristics, and in my analysis I will investigate which of these are most strongly correlated with a coffee's overall rating.
 
 #### Load Data
 ```{r}
 coffee_ratings <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-07-07/coffee_ratings.csv')
 ```
+
+#### Analysis
+```{r}
+coffee_characteristics <- coffee_ratings |>
+  dplyr::select(
+    total_cup_points,
+    aroma,
+    flavor,
+    aftertaste,
+    acidity,
+    body,
+    balance,
+    uniformity,
+    clean_cup,
+    sweetness,
+    cupper_points
+  )
+
+
+correlations <- coffee_characteristics |>
+  cor(use = "complete.obs") |>
+  as.data.frame() |>
+  dplyr::select(total_cup_points) |>
+  dplyr::rename(correlation = total_cup_points) |>
+  tibble::rownames_to_column("characteristic") |>
+  dplyr::filter(characteristic != "total_cup_points") |>
+  dplyr::arrange(correlation)
+
+```
+
+#### Plot
+
+```{r}
+library(ggplot2)
+
+ggplot(
+  correlations,
+  aes(
+    x = correlation,
+    y = reorder(characteristic, correlation)
+  )
+) +
+  geom_col(fill = "blue") +
+  labs(
+    title = "Which Characteristics Relate Most to Overall Coffee Rating (cupper points)?",
+    subtitle = "Correlation with total cupper points",
+    x = "Correlation with total cupper points",
+    y = "Coffee characteristic"
+  ) +
+  theme_minimal()
+```
+
+
+## Complete Citations
+[TidyTuesday resource](https://github.com/rfordatascience/tidytuesday/tree/main/data/2020/2020-07-07)
+The data was uploaded to the TidyTuesday repository by Jon Harmon. 
+
+[Original data source](https://github.com/jldbc/coffee-quality-database)
+The original data can be found on James LeDoux's github. He is a Buzzfeed Data Scientist who created this database based on reviews of arabica and robusta coffee beans from the Coffee Quality Institute's trained reviewers.

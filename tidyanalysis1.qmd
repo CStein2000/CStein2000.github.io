@@ -61,5 +61,5 @@ While the most frequently used words vary, words like "million", "tax", "net", a
 [TidyTuesday resource](https://github.com/rfordatascience/tidytuesday/tree/main/data/2025/2025-03-25) 
 This data is taken from an upload to public TidyTuesday repository by Libby Heeren. 
 
-[Original source of data](https://gregoryvdvinne.github.io/Text-Mining-Amazon-Budgets.html) 
+[Original data source](https://gregoryvdvinne.github.io/Text-Mining-Amazon-Budgets.html) 
 This data explores text data from Amazon's annual reports, using pdf's created by Gregory Vander Vinne, a TidyTuesday participant, in the post linked. 
