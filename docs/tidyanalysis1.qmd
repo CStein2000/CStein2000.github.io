@@ -1,5 +1,0 @@
----
-title: "tidy analysis 1"
-format: html
----
-

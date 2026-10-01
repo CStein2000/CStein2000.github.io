@@ -47,10 +47,8 @@ correlations <- coffee_characteristics |>
 ```
 
 #### Plot
-
 ```{r}
 library(ggplot2)
-
 ggplot(
   correlations,
   aes(
@@ -60,7 +58,7 @@ ggplot(
 ) +
   geom_col(fill = "purple") +
   labs(
-    title = "Which Characteristics Relate Most to Overall Coffee Rating (cupper points)?",
+    title = "Which Characteristics Relate Most to Overall Coffee Rating?",
     subtitle = "Correlation with total cupper points",
     x = "Correlation with total cupper points",
     y = "Coffee characteristic"
@@ -68,6 +66,8 @@ ggplot(
   theme_minimal()
 ```
 
+## Results
+While flavor and aftertaste were shown to have the highest correlation with total cupper points recieved, all 10 of the coffee characteristics played a role in the overall coffee rating. 
 
 ## Complete Citations
 [TidyTuesday resource](https://github.com/rfordatascience/tidytuesday/tree/main/data/2020/2020-07-07)

@@ -13,9 +13,9 @@ website:
       - text: Data Viz
         menu: 
         - href: tidyanalysis1.qmd
-          text: Tidy Analysis 1 
+          text: Amazon Annual Reports
         - href: tidyanalysis2.qmd
-          text: Tidy Analysis 2
+          text: Coffee Ratings
 
 format:
   html:
