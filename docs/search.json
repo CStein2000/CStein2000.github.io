@@ -9,9 +9,9 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "Celina",
     "section": "",
-    "text": "Celina\nI am a current senior at Pitzer College working to create inclusive, user-centered solutions in design and scientific research. As a Cognitive Science major and Data Science minor, I am excited to pursue roles in research labs and the tech industry that bridge scientific discovery, UX design, and ethical technological innovation.\nI’m currently seeking neuroscience research roles and product design/marketing internship experiences. I look forward to connecting with you!\n## Education Pitzer College | Claremont, CA | BA in Cogntive Science, Minor in Data Science | Major specialization in neurophilosophy and human-centered design | September 2023 - May 2027\n## Experience Active Minds, Pitzer College | Marketing Manager + Ambassador | Feb. 2026 - Present Pitzer Division of Student Affairs | Social Media Intern | Jan. 2026 - May 2026 The Outback Newsprint Magazine | Head Web Designer + Staff Editor | Dec. 2023 - Jul. 2025"
+    "text": "I am a current senior at Pitzer College working to create inclusive, user-centered solutions in design and scientific research. As a Cognitive Science major and Data Science minor, I am excited to pursue roles in research labs and the tech industry that bridge scientific discovery, UX design, and ethical technological innovation.\nI’m currently seeking neuroscience research roles and product design/marketing internship experiences. I look forward to connecting with you!\n\nEducation\nPitzer College | Claremont, CA | BA in Cogntive Science, Minor in Data Science | Major specialization in neurophilosophy and human-centered design | September 2023 - May 2027\n\n\nExperience\nActive Minds, Pitzer College | Marketing Manager + Ambassador | Feb. 2026 - Present Pitzer Division of Student Affairs | Social Media Intern | Jan. 2026 - May 2026 The Outback Newsprint Magazine | Head Web Designer + Staff Editor | Dec. 2023 - Jul. 2025"
   },
   {
     "objectID": "index.html#page-content-excluded-for-brevity",
@@ -54,5 +54,19 @@
     "title": "Linguistic Analysis of Amazon’s Annual Reports",
     "section": "Results",
     "text": "Results\nWhile the most frequently used words vary, words like “million”, “tax”, “net”, and “stock” occur multiple times. These findings suggest that the Amazon annual reports frequently use business and finance-related language."
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "About",
+    "section": "Education",
+    "text": "Education\nPitzer College | Claremont, CA | BA in Cogntive Science, Minor in Data Science | Major specialization in neurophilosophy and human-centered design | September 2023 - May 2027"
+  },
+  {
+    "objectID": "about.html#experience",
+    "href": "about.html#experience",
+    "title": "About",
+    "section": "Experience",
+    "text": "Experience\nActive Minds, Pitzer College | Marketing Manager + Ambassador | Feb. 2026 - Present Pitzer Division of Student Affairs | Social Media Intern | Jan. 2026 - May 2026 The Outback Newsprint Magazine | Head Web Designer + Staff Editor | Dec. 2023 - Jul. 2025"
   }
 ]

@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "Celina"
 image: media/profilepic.png
 toc: false
 about: 
@@ -10,18 +10,16 @@ about:
     - text: GitHub Repo (website)
       href: https://github.com/CStein2000/CStein2000.github.io
 ---
-
-# Celina
 I am a current senior at Pitzer College working to create inclusive, user-centered solutions in design and scientific research. As a Cognitive Science major and Data Science minor, I am excited to pursue roles in research labs and the tech industry that bridge scientific discovery, UX design, and ethical technological innovation.
 
  I'm currently seeking neuroscience research roles and product design/marketing internship experiences. I look forward to connecting with you!
 
 
- ## Education
+### Education
 Pitzer College | Claremont, CA | BA in Cogntive Science, Minor in Data Science | Major specialization in neurophilosophy and human-centered design | September 2023 - May 2027
 
 
- ## Experience
+### Experience
 Active Minds, Pitzer College | Marketing Manager + Ambassador | Feb. 2026 - Present
 Pitzer Division of Student Affairs | Social Media Intern | Jan. 2026 - May 2026
 The Outback Newsprint Magazine | Head Web Designer + Staff Editor | Dec. 2023 - Jul. 2025
