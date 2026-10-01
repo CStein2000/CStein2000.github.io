@@ -3,3 +3,8 @@ title: "tidy analysis 2"
 format: html
 ---
 
+
+#### Load Data
+```{r}
+coffee_ratings <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-07-07/coffee_ratings.csv')
+```
