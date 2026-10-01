@@ -1,31 +1,25 @@
 ---
-title: "Linguistic Analysis of Amazon's Annual reports"
+title: "Linguistic Analysis of Amazon's Annual Reports"
 description: |
     Analysis of Amazon Annual reports data from TidyTuesday. 
-author: Celina
+author: Lee
 date: September 30, 2026
 format: html
-
+execute:
+  warning: false
+  message: false
 ---
 
-## Amazon Anual Reports
+## Amazon Annual Reports
 
-This analysis examines the linguistic patterns in Amazon's annual reports using data from TidyTuesday (2025-03-25). The data contains information about the usage of different words in the Amazon reports, and we will be investigating how the language has chanaged over time. We cannot make causal claims made from this dataset, but we will investigate cross-report word overlap. 
-
-
-## Full Citation
-
+This analysis examines the linguistic patterns in Amazon's annual reports using data from TidyTuesday (2025-03-25). The data contains information about the usage of different words in the Amazon reports, and we will be investigating how the language has changed over time. We cannot make causal claims made from this dataset, but we will investigate the frequency of the top 10 words across 4 different years (2005, 2010, 2015, 2020). 
 
 #### Load data
 ```{r}
 report_words_clean <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-03-25/report_words_clean.csv')
-
-head(report_words_clean)
-names(report_words_clean)
-dplyr::glimpse(report_words_clean)
 ```
 
-#### Analysis: Count words and find top 10 most common words for 2005, 2015, and 2025
+#### Analysis: Count words and find top 10 most common words for 2005, 2010, 2015, and 2020
 ```{r}
 word_counts <- report_words_clean |>
 dplyr::count(year, word, sort = TRUE)
@@ -41,4 +35,31 @@ top_words <- selected_years |>
 
 #### 1 Plot: Illustrate Amazon's top 10 words across annual reports (5-year intervals)
 ```{r}
-ggplot(top_words, aes(x = n,))
+library(ggplot2)
+ggplot(
+    top_words, 
+    aes(
+        x = n,
+        y = reorder(word, n)
+    )
+) +
+geom_col(fill = "blue") +
+facet_wrap(~ year, scales = "free") +
+labs(
+    title = "Amazon's 10 Most Frequently Used Words Per Year",
+    subtitle = "Comparing annual report word frequency across 2005, 2010, 2015, and 2020",
+    x = "Number of occurrences",
+    y = NULL
+) +
+theme_minimal()
+```
+
+## Results
+While the most frequently used words vary, words like "million", "tax", "net", and "stock" occur multiple times. These findings suggest that the Amazon annual reports frequently use business and finance-related language.
+
+## Full Citation
+[TidyTuesday resource](https://github.com/rfordatascience/tidytuesday/tree/main/data/2025/2025-03-25) 
+This data is taken from an upload to public TidyTuesday repository by Libby Heeren. 
+
+[Original source of data](https://gregoryvdvinne.github.io/Text-Mining-Amazon-Budgets.html) 
+This data explores text data from Amazon's annual reports, using pdf's created by Gregory Vander Vinne, a TidyTuesday participant, in the post linked. 
