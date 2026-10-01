@@ -18,4 +18,6 @@ about:
 
 ---
 
-Hello! My name is Celina, and I am a senior undergraduate student at Pitzer College in Claremont, CA. I study Cognitive Science with a dual-focus on philosophy of mind and design, and a minor in data science. I have worked in experience design, social media marketing, and cognitive science research in my internship experiences and academics. Outside of work, I love to thrift new fashion finds, experiment with different storytelling forms, and discuss political media.
+Hello! My name is Celina, and I am a senior undergraduate student at Pitzer College in Claremont, CA. 
+
+I study Cognitive Science with a dual-focus on philosophy of mind and design, and a minor in data science. I have worked in experience design, social media marketing, and cognitive science research in my internship experiences and academics. Outside of work, I love to thrift new fashion finds, experiment with different storytelling forms, and discuss political media.

@@ -58,7 +58,7 @@ ggplot(
     y = reorder(characteristic, correlation)
   )
 ) +
-  geom_col(fill = "blue") +
+  geom_col(fill = "purple") +
   labs(
     title = "Which Characteristics Relate Most to Overall Coffee Rating (cupper points)?",
     subtitle = "Correlation with total cupper points",
@@ -74,4 +74,4 @@ ggplot(
 The data was uploaded to the TidyTuesday repository by Jon Harmon. 
 
 [Original data source](https://github.com/jldbc/coffee-quality-database)
-The original data can be found on James LeDoux's github. He is a Buzzfeed Data Scientist who created this database based on reviews of arabica and robusta coffee beans from the Coffee Quality Institute's trained reviewers.
+The original data can be found on James LeDoux's github. LeDoux is a Buzzfeed Data Scientist who created this database based on reviews of arabica and robusta coffee beans from the Coffee Quality Institute's trained reviewers.
