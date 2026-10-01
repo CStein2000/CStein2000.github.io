@@ -12,7 +12,7 @@ execute:
 
 ## Amazon Annual Reports
 
-This analysis examines the linguistic patterns in Amazon's annual reports using data from TidyTuesday (2025-03-25). The data contains information about the usage of different words in the Amazon reports, and we will be investigating how the language has changed over time. We cannot make causal claims made from this dataset, but we will investigate the frequency of the top 10 words across 4 different years (2005, 2010, 2015, 2020). 
+This analysis examines the linguistic patterns in Amazon's annual reports using data from TidyTuesday (2025-03-25). The data contains information about the usage of different words in the Amazon reports, and I will be investigating how the language has changed over time. We cannot make causal claims made from this dataset, but will investigate the frequency of the top 10 words across 4 different years (2005, 2010, 2015, 2020). 
 
 #### Load Data
 ```{r}
