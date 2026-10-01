@@ -2,7 +2,7 @@
 title: "Linguistic Analysis of Amazon's Annual Reports"
 description: |
     Analysis of Amazon Annual reports data from TidyTuesday. 
-author: Lee
+author: Celina
 date: September 30, 2026
 format: html
 execute:
@@ -43,7 +43,7 @@ ggplot(
         y = reorder(word, n)
     )
 ) +
-geom_col(fill = "blue") +
+geom_col(fill = "mediumpurple") +
 facet_wrap(~ year, scales = "free") +
 labs(
     title = "Amazon's 10 Most Frequently Used Words Per Year",
