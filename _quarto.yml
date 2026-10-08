@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "CStein2000.github.io"
+  title: "Celina's Data Science Portfolio"
   navbar:
     left:
       - href: index.qmd
