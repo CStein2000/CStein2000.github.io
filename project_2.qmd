@@ -1,0 +1,116 @@
+---
+title: "The Speeches of Hamlet"
+description: |
+    dsa;ghads]ghds]asi
+author: Celina
+date: October 14, 2026
+format: html
+execute:
+  warning: false
+  message: false
+---
+## Linguistic Analysis of Hamlet Text
+
+
+
+#### Load Data
+```{r}
+library(tidyverse)
+library(forcats)
+library(stringr)
+
+hamlet <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-09-17/hamlet.csv')
+
+#inspect data
+glimpse(hamlet)
+names(hamlet)
+```
+
+
+#### Question 1: ______
+```{r}
+
+
+
+
+```
+
+
+#### Plot
+```{r}
+
+
+
+
+```
+
+
+## Results
+```{r}
+
+
+
+
+```
+
+#### Question 2: _____
+```{r}
+
+
+
+
+```
+
+
+#### Plot
+```{r}
+
+
+
+
+```
+
+
+## Results
+```{r}
+
+
+
+
+```
+
+
+#### Question 3: ______
+```{r}
+
+
+
+
+```
+
+
+#### Plot
+```{r}
+
+
+
+
+```
+
+
+## Results
+```{r}
+
+
+
+
+```
+
+
+## Complete Citations
+```{r}
+
+
+
+
+```
