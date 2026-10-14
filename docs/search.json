@@ -68,5 +68,47 @@
     "title": "What Makes a Highly-Rated Cup of Coffee?",
     "section": "Complete Citations",
     "text": "Complete Citations\nTidyTuesday resource The data was uploaded to the TidyTuesday repository by Jon Harmon.\nOriginal data source The original data can be found on James LeDoux’s github. LeDoux is a Buzzfeed Data Scientist who created this database based on reviews of arabica and robusta coffee beans from the Coffee Quality Institute’s trained reviewers."
+  },
+  {
+    "objectID": "project_2.html",
+    "href": "project_2.html",
+    "title": "The Speeches of Hamlet",
+    "section": "",
+    "text": "Show Code\nlibrary(tidyverse)\nlibrary(forcats)\nlibrary(stringr)\n\nhamlet &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-09-17/hamlet.csv')"
+  },
+  {
+    "objectID": "project_2.html#linguistic-analysis-of-hamlet-text",
+    "href": "project_2.html#linguistic-analysis-of-hamlet-text",
+    "title": "The Speeches of Hamlet",
+    "section": "",
+    "text": "Show Code\nlibrary(tidyverse)\nlibrary(forcats)\nlibrary(stringr)\n\nhamlet &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-09-17/hamlet.csv')"
+  },
+  {
+    "objectID": "project_2.html#results",
+    "href": "project_2.html#results",
+    "title": "The Speeches of Hamlet",
+    "section": "Results",
+    "text": "Results\n\nQuestion 2: _____\n\n\nPlot"
+  },
+  {
+    "objectID": "project_2.html#results-1",
+    "href": "project_2.html#results-1",
+    "title": "The Speeches of Hamlet",
+    "section": "Results",
+    "text": "Results\n\nQuestion 3: ______\n\n\nPlot"
+  },
+  {
+    "objectID": "project_2.html#results-2",
+    "href": "project_2.html#results-2",
+    "title": "The Speeches of Hamlet",
+    "section": "Results",
+    "text": "Results"
+  },
+  {
+    "objectID": "project_2.html#complete-citations",
+    "href": "project_2.html#complete-citations",
+    "title": "The Speeches of Hamlet",
+    "section": "Complete Citations",
+    "text": "Complete Citations"
   }
 ]
