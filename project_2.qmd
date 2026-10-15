@@ -20,6 +20,7 @@ This is a full text analysis project using dialogue from Shakespeare's play Haml
 
 #### Load/Clean Data
 ```{r}
+code-summary: "Cleaning data code"
 library(tidyverse)
 library(forcats)
 library(stringr)
@@ -40,6 +41,7 @@ hamlet <- hamlet |>
 
 ### Question 1: Who has the biggest yapper energy out of all Hamlet characters?
 ```{r}
+code-summary: "Creating the yapper database"
 # Count words in each phrase.
 hamlet_words <- hamlet |>
   mutate(
@@ -60,6 +62,7 @@ act_words <- hamlet_words |>
 
 #### Plot 1 (Stacked Bar Chart)
 ```{r}
+code-summary: "Creating the yapper visualization"
 act_plot <- ggplot(
   act_words,
   aes(
@@ -95,6 +98,7 @@ From the bar graphs, you can see that the top 5 biggest yappers are all male cha
 
 ### Question 2: Does love or death conquer all?
 ```{r}
+code-summary: "Does this play care more about love or revenge (through death)?"
 love_pattern <- "\\b(love|loves|loved|loving|lover|lovers)\\b"
 
 death_pattern <- "\\b(death|dead|die|dies|died|dying|kill|kills|killed|killing)\\b"
@@ -125,6 +129,7 @@ love_death <- hamlet |>
 
 #### Plot 2 (Line Chart)
 ```{r}
+code-summary: "Line chart code"
 love_death_plot <- ggplot(
   love_death,
   aes(
