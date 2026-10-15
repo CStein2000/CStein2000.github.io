@@ -1,14 +1,7 @@
 ---
 title: "The Speeches of Hamlet"
 description: |
-   This is a full text analysis project using dialogue from Shakespeare's play Hamlet. I analyze character strings to answer the following 2 research questions:
-
-
-   1. Who is the biggest yapper (i.e. who talks the most) in Hamlet?
-   2. How does language about love compare to language about death?
-
-
-
+    Linguistic Analysis of Hamlet text.
 
 author: Celina
 date: October 14, 2026
@@ -23,53 +16,74 @@ execute:
 ---
 ## Hamlet Linguistic Analysis
 
+This is a full text analysis project using dialogue from Shakespeare's play Hamlet. I analyze character strings to answer the following 2 research questions: Who is the biggest yapper (i.e. who talks the most) in Hamlet? How does language about love compare to language about death?
 
-
-
-
-
-#### Load Data
+#### Load/Clean Data
 ```{r}
 library(tidyverse)
 library(forcats)
 library(stringr)
-
+library(plotly)
 
 hamlet <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-09-17/hamlet.csv')
+
+hamlet <- hamlet |>
+  filter(
+    !str_detect(
+      character,
+      regex("stage direction", ignore_case = TRUE)
+    )
+  ) |>
+  filter(!is.na(dialogue), !is.na(character))
 ```
 
 
-
-
-### Question 1: ______
+### Question 1: Who speaks the most in each Act?
 ```{r}
+# Count words in each phrase.
+hamlet_words <- hamlet |>
+  mutate(
+    word_count = str_count(
+      dialogue,
+      "\\b[[:alpha:]]+\\b"
+    )
+  )
 
-
-
-
-
-
-
-
+# Add words per character, per act. 
+act_words <- hamlet_words |>
+  group_by(act, character) |>
+  summarise(
+    total_words = sum(word_count),
+    .groups = "drop"
+  )
 ```
 
-
-
-
-#### Plot
+#### Plot (Stacked Bar Chart)
 ```{r}
+act_plot <- ggplot(
+  act_words,
+  aes(
+    x = act,
+    y = total_words,
+    fill = fct_reorder(character, -total_words, .fun = sum),
+    text = paste0(
+      "Act: ", act,
+      "<br>Character: ", character,
+      "<br>Words: ", total_words
+    )
+  )
+) +
+  geom_col() +
+  labs(
+    title = "Who Speaks the Most in Each Act of Hamlet?",
+    x = "Act",
+    y = "Total Words Spoken",
+    fill = "Character"
+  ) +
+  theme_minimal()
 
-
-
-
-
-
-
-
+ggplotly(act_plot, tooltip = "text")
 ```
-
-
-
 
 #### Q1 Results
 ```{r}
