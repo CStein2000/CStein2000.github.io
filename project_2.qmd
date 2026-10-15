@@ -16,7 +16,7 @@ execute:
 ---
 ## Hamlet Linguistic Analysis
 
-This is a full text analysis project using dialogue from Shakespeare's play Hamlet. I analyze character strings to answer the following 2 research questions: Who is the biggest yapper (i.e. who talks the most) in Hamlet? How does language about love compare to language about death?
+This is a full text analysis project using dialogue from Shakespeare's play Hamlet. I analyze character strings to answer the following two research questions: 1. Who is the biggest yapper (i.e. who talks the most) in Hamlet? 2. How does language about love compare to language about death?
 
 #### Load/Clean Data
 ```{r}
@@ -58,7 +58,7 @@ act_words <- hamlet_words |>
   )
 ```
 
-#### Plot (Stacked Bar Chart)
+#### Plot 1 (Stacked Bar Chart)
 ```{r}
 act_plot <- ggplot(
   act_words,
@@ -86,9 +86,10 @@ ggplotly(act_plot, tooltip = "text")
 ```
 
 #### Q1 Analysis + Results
+
 For Question 1, I used an interactive, plotly stacked bar graph to visualize the characters that speak the most (Hamlet) and the least (Guildenstern). Each bar represents one of the 5 acts in the play. The colors represent each character, and if you click on a character's name in the key the plot will isolate only their data. 
 
-From the bar graphs, you can see that the top 5 biggest yappers are all male characters (Hamlet, King Claudius, Lord Polonius, Horatio, and Laertes), followed by Ophelia in 6th place. 
+From the bar graphs, you can see that the top 5 biggest yappers are all male characters (Hamlet, King Claudius, Lord Polonius, Horatio, and Laertes), followed by Ophelia in 6th place. What does it say about the focus of this piece that so many lines are spoken by the same 5 men?
 
 
 
@@ -122,7 +123,7 @@ love_death <- hamlet |>
   )
 ```
 
-#### Plot
+#### Plot 2 (Line Chart)
 ```{r}
 love_death_plot <- ggplot(
   love_death,
@@ -149,17 +150,36 @@ love_death_plot <- ggplot(
   theme_minimal()
 
 ggplotly(love_death_plot, tooltip = "text")
+
+
+# sum of occurrences
+
+overall_totals <- love_death |>
+  group_by(Theme) |>
+  summarise(
+    Total_Occurrences = sum(Occurrences),
+    .groups = "drop"
+  )
+
+knitr::kable(
+  overall_totals,
+  caption = "Total Love and Death Word Occurrences in Hamlet"
+)
 ```
 
 #### Q2 Analysis + Results
-This analysis compares the frequency of love and death related words across Hamlet's 5 acts. It counts related terms using word patterns using an interactive plotly visualization.
 
+This analysis compares the frequency of love and death related words across Hamlet's 5 acts. It counts related terms using word patterns using an interactive plotly line chart.
 
+Act 1 contains an equal amount of love and death (15 occurrences each). However, the theme of love quickly rises throughout Acts II and III. In Act II, the theme of death is at its lowest, but it peaks around the climax of the play in Act IV. Themes of love peak in Act III, right before Ophelia's death. 
+
+I think its interesting how the theme of love peaks and then drops right before the same happens with the theme of death. I wonder if this could indicate the central focus of the story on violence/death > romance, seeing how taking action/revenge in the face of corruption is central to the climax of the piece, while Hamlet's romance with Ophelia serves to build up to this turning point. 
 
 
 
 ## Conclusion
 
+While I didn't go into this project with gender in mind, I found that my data inadvertently highlights disparities between the amount of speech male versus female characters have (see Plot 1). Additionally, the fact that there are 10 more occurrences of death than there are of love indicates a greater focus on the theme of death in the play Hamlet.
 
 
 
