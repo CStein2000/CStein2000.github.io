@@ -38,7 +38,7 @@ hamlet <- hamlet |>
 ```
 
 
-### Question 1: Who speaks the most in each Act?
+### Question 1: Who has the biggest yapper energy out of all Hamlet characters?
 ```{r}
 # Count words in each phrase.
 hamlet_words <- hamlet |>
@@ -85,72 +85,89 @@ act_plot <- ggplot(
 ggplotly(act_plot, tooltip = "text")
 ```
 
-#### Q1 Results
-```{r}
+#### Q1 Analysis + Results
+For Question 1, I used an interactive, plotly stacked bar graph to visualize the characters that speak the most (Hamlet) and the least (Guildenstern). Each bar represents one of the 5 acts in the play. The colors represent each character, and if you click on a character's name in the key the plot will isolate only their data. 
+
+From the bar graphs, you can see that the top 5 biggest yappers are all male characters (Hamlet, King Claudius, Lord Polonius, Horatio, and Laertes), followed by Ophelia in 6th place. 
 
 
 
-
-
-
-
-
-```
-
-
-### Question 2: _____
+### Question 2: Does love or death conquer all?
 ```{r}
 love_pattern <- "\\b(love|loves|loved|loving|lover|lovers)\\b"
 
 death_pattern <- "\\b(death|dead|die|dies|died|dying|kill|kills|killed|killing)\\b"
 
-
-
-
-
-
-
+love_death <- hamlet |>
+  mutate(
+    love_count = str_count(
+      str_to_lower(dialogue),
+      love_pattern
+    ),
+    death_count = str_count(
+      str_to_lower(dialogue),
+      death_pattern
+    )
+  ) |>
+  group_by(act) |>
+  summarise(
+    Love = sum(love_count, na.rm = TRUE),
+    Death = sum(death_count, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  pivot_longer(
+    cols = c(Love, Death),
+    names_to = "Theme",
+    values_to = "Occurrences"
+  )
 ```
-
-
-
 
 #### Plot
 ```{r}
+love_death_plot <- ggplot(
+  love_death,
+  aes(
+    x = act,
+    y = Occurrences,
+    color = Theme,
+    group = Theme,
+    text = paste0(
+      "Act: ", act,
+      "<br>Theme: ", Theme,
+      "<br>Occurrences: ", Occurrences
+    )
+  )
+) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  labs(
+    title = "Love vs. Death in Hamlet",
+    x = "Act",
+    y = "Number of Word Occurrences",
+    color = "Theme"
+  ) +
+  theme_minimal()
 
-
-
-
-
-
-
-
-
+ggplotly(love_death_plot, tooltip = "text")
 ```
 
-
-
-
-#### Q2 Results
-```{r}
-
+#### Q2 Analysis + Results
+This analysis compares the frequency of love and death related words across Hamlet's 5 acts. It counts related terms using word patterns using an interactive plotly visualization.
 
 
 
 
 
-
-
-```
+## Conclusion
 
 
 
 
 ## Complete Citations
-[TidyTuesday resource] (https://github.com/rfordatascience/tidytuesday/blob/main/data/2024/2024-09-17/readme.md)
+[TidyTuesday resource](https://github.com/rfordatascience/tidytuesday/blob/main/data/2024/2024-09-17/readme.md)
 The data was uploaded to the TidyTuesday database by Nicola Rennie. Find out more about her work here: https://github.com/nrennie
 
 
-[Original datasource] (https://shakespeare.mit.edu/)
+[Original datasource](https://shakespeare.mit.edu/)
 The original data sources is Shakespeare's works, which can be found on MIT's website here.
 
