@@ -86,7 +86,9 @@ hamlet <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tid
 
 ### Question 2: _____
 ```{r}
+love_pattern <- "\\b(love|loves|loved|loving|lover|lovers)\\b"
 
+death_pattern <- "\\b(death|dead|die|dies|died|dying|kill|kills|killed|killing)\\b"
 
 
 
@@ -101,6 +103,7 @@ hamlet <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tid
 
 #### Plot
 ```{r}
+
 
 
 

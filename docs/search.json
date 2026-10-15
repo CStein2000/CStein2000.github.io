@@ -74,7 +74,7 @@
     "href": "project_2.html",
     "title": "The Speeches of Hamlet",
     "section": "",
-    "text": "Show Code\nlibrary(tidyverse)\nlibrary(forcats)\nlibrary(stringr)\n\n\nhamlet &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-09-17/hamlet.csv')"
+    "text": "Show Code\nlibrary(tidyverse)\nlibrary(forcats)\nlibrary(stringr)\n\n\nhamlet &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-09-17/hamlet.csv')\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow Code\nlove_pattern &lt;- \"\\\\b(love|loves|loved|loving|lover|lovers)\\\\b\"\n\ndeath_pattern &lt;- \"\\\\b(death|dead|die|dies|died|dying|kill|kills|killed|killing)\\\\b\""
   },
   {
     "objectID": "project_2.html#linguistic-analysis-of-hamlet-text",
@@ -130,6 +130,6 @@
     "href": "project_2.html#hamlet-linguistic-analysis",
     "title": "The Speeches of Hamlet",
     "section": "",
-    "text": "Show Code\nlibrary(tidyverse)\nlibrary(forcats)\nlibrary(stringr)\n\n\nhamlet &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-09-17/hamlet.csv')"
+    "text": "Show Code\nlibrary(tidyverse)\nlibrary(forcats)\nlibrary(stringr)\n\n\nhamlet &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-09-17/hamlet.csv')\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow Code\nlove_pattern &lt;- \"\\\\b(love|loves|loved|loving|lover|lovers)\\\\b\"\n\ndeath_pattern &lt;- \"\\\\b(death|dead|die|dies|died|dying|kill|kills|killed|killing)\\\\b\""
   }
 ]
