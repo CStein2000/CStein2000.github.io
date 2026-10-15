@@ -16,7 +16,7 @@ execute:
 ---
 ## Hamlet Linguistic Analysis
 
-This is a full text analysis project using dialogue from Shakespeare's play Hamlet. I analyze character strings to answer the following two research questions: 1. Who is the biggest yapper (i.e. who talks the most) in Hamlet? 2. How does language about love compare to language about death?
+This is a full text analysis project using dialogue from Shakespeare's play Hamlet. I analyze character strings to answer the following research questions: 1. Who is the biggest yapper (i.e. who talks the most) in Hamlet? 2. How does language about love compare to language about death?
 
 #### Load/Clean Data
 ```{r}
@@ -83,7 +83,7 @@ act_plot <- ggplot(
     y = "Total Words Spoken",
     fill = "Character"
   ) +
-  theme_minimal()
+  theme_gray()
 
 ggplotly(act_plot, tooltip = "text")
 ```
@@ -152,12 +152,30 @@ love_death_plot <- ggplot(
     y = "Number of Word Occurrences",
     color = "Theme"
   ) +
-  theme_minimal()
+  theme_gray()
 
 ggplotly(love_death_plot, tooltip = "text")
+```
 
+```{r}
+#| code-summary: "Summary table code"
 
-# sum of occurrences
+act_totals <- love_death |>
+  group_by(act, Theme) |>
+  summarise(
+    Total_Occurrences = sum(Occurrences),
+    .groups = "drop"
+  ) |>
+  pivot_wider(
+    names_from = Theme,
+    values_from = Total_Occurrences,
+    values_fill = 0
+  )
+
+knitr::kable(
+  act_totals,
+  caption = "Love and Death Word Occurrences by Act"
+)
 
 overall_totals <- love_death |>
   group_by(Theme) |>
