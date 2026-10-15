@@ -16,6 +16,8 @@ website:
           text: Amazon Annual Reports
         - href: tidyanalysis2.qmd
           text: Coffee Ratings
+        - href: project_2.qmd
+          text: Hamlet Linguistics
 
 format:
   html:

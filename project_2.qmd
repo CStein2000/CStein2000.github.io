@@ -1,19 +1,30 @@
 ---
 title: "The Speeches of Hamlet"
 description: |
-    dsa;ghads]ghds]asi
+   This is a full text analysis project using dialogue from Shakespeare's play Hamlet. I analyze character strings to answer the following 2 research questions:
+
+
+   1. Who is the biggest yapper (i.e. who talks the most) in Hamlet?
+   2. How does language about love compare to language about death?
+
+
+
+
 author: Celina
 date: October 14, 2026
-format: 
-    html:
-        code-fold: true
-        code-summary: "Show Code"
-        code-tools: true
+format:
+   html:
+       code-fold: true
+       code-summary: "Show Code"
+       code-tools: true
 execute:
-  warning: false
-  message: false
+ warning: false
+ message: false
 ---
-## Linguistic Analysis of Hamlet Text
+## Hamlet Linguistic Analysis
+
+
+
 
 
 
@@ -23,17 +34,26 @@ library(tidyverse)
 library(forcats)
 library(stringr)
 
+
 hamlet <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-09-17/hamlet.csv')
 ```
 
 
-#### Question 1: ______
+
+
+### Question 1: ______
 ```{r}
 
 
 
 
+
+
+
+
 ```
+
+
 
 
 #### Plot
@@ -42,24 +62,41 @@ hamlet <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tid
 
 
 
+
+
+
+
 ```
 
 
-## Results
+
+
+#### Q1 Results
 ```{r}
 
 
 
 
+
+
+
+
 ```
 
-#### Question 2: _____
+
+### Question 2: _____
 ```{r}
 
 
 
 
+
+
+
+
 ```
+
+
 
 
 #### Plot
@@ -68,20 +105,21 @@ hamlet <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tid
 
 
 
+
+
+
+
 ```
 
 
-## Results
+
+
+#### Q2 Results
 ```{r}
 
 
 
 
-```
-
-
-#### Question 3: ______
-```{r}
 
 
 
@@ -89,28 +127,13 @@ hamlet <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tid
 ```
 
 
-#### Plot
-```{r}
-
-
-
-
-```
-
-
-## Results
-```{r}
-
-
-
-
-```
 
 
 ## Complete Citations
-```{r}
+[TidyTuesday resource] (https://github.com/rfordatascience/tidytuesday/blob/main/data/2024/2024-09-17/readme.md)
+The data was uploaded to the TidyTuesday database by Nicola Rennie. Find out more about her work here: https://github.com/nrennie
 
 
+[Original datasource] (https://shakespeare.mit.edu/)
+The original data sources is Shakespeare's works, which can be found on MIT's website here.
 
-
-```

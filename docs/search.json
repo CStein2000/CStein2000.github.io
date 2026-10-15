@@ -74,7 +74,7 @@
     "href": "project_2.html",
     "title": "The Speeches of Hamlet",
     "section": "",
-    "text": "Show Code\nlibrary(tidyverse)\nlibrary(forcats)\nlibrary(stringr)\n\nhamlet &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-09-17/hamlet.csv')"
+    "text": "Show Code\nlibrary(tidyverse)\nlibrary(forcats)\nlibrary(stringr)\n\n\nhamlet &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-09-17/hamlet.csv')"
   },
   {
     "objectID": "project_2.html#linguistic-analysis-of-hamlet-text",
@@ -88,14 +88,14 @@
     "href": "project_2.html#results",
     "title": "The Speeches of Hamlet",
     "section": "Results",
-    "text": "Results\n\nQuestion 2: _____\n\n\nPlot"
+    "text": "Results"
   },
   {
     "objectID": "project_2.html#results-1",
     "href": "project_2.html#results-1",
     "title": "The Speeches of Hamlet",
     "section": "Results",
-    "text": "Results\n\nQuestion 3: ______\n\n\nPlot"
+    "text": "Results"
   },
   {
     "objectID": "project_2.html#results-2",
@@ -109,6 +109,27 @@
     "href": "project_2.html#complete-citations",
     "title": "The Speeches of Hamlet",
     "section": "Complete Citations",
-    "text": "Complete Citations"
+    "text": "Complete Citations\n[TidyTuesday resource] (https://github.com/rfordatascience/tidytuesday/blob/main/data/2024/2024-09-17/readme.md) The data was uploaded to the TidyTuesday database by Nicola Rennie. Find out more about her work here: https://github.com/nrennie\n[Original datasource] (https://shakespeare.mit.edu/) The original data sources is Shakespeare’s works, which can be found on MIT’s website here."
+  },
+  {
+    "objectID": "project_2.html#of-hamlet-text",
+    "href": "project_2.html#of-hamlet-text",
+    "title": "The Speeches of Hamlet",
+    "section": "",
+    "text": "Show Code\nlibrary(tidyverse)\nlibrary(forcats)\nlibrary(stringr)\n\nhamlet &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-09-17/hamlet.csv')"
+  },
+  {
+    "objectID": "project_2.html#hamlet-text",
+    "href": "project_2.html#hamlet-text",
+    "title": "The Speeches of Hamlet",
+    "section": "",
+    "text": "Show Code\nlibrary(tidyverse)\nlibrary(forcats)\nlibrary(stringr)\n\nhamlet &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-09-17/hamlet.csv')"
+  },
+  {
+    "objectID": "project_2.html#hamlet-linguistic-analysis",
+    "href": "project_2.html#hamlet-linguistic-analysis",
+    "title": "The Speeches of Hamlet",
+    "section": "",
+    "text": "Show Code\nlibrary(tidyverse)\nlibrary(forcats)\nlibrary(stringr)\n\n\nhamlet &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-09-17/hamlet.csv')"
   }
 ]
