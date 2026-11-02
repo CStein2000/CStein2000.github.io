@@ -38,7 +38,7 @@ hamlet <- hamlet |>
   ) |>
   filter(!is.na(dialogue), !is.na(character)) |>
   mutate(
-    character = str_remove(str_trim(character), ":\\s*$"),
+    character = str_remove_all(str_trim(character), ":\\s*$"),
   )
 ```
 
@@ -64,13 +64,29 @@ act_words <- hamlet_words |>
   )
 ```
 
+```{r}
+act_words |>
+  filter(str_detect(character, regex("Guildenstern", ignore_case = TRUE))) |>
+  count(character)
+
+```
+
+
 #### Plot 1 (Stacked Bar Chart)
 ```{r}
 #| code-summary: "Creating the yapper visualization"
 # making the color differences between characters more visible
-character_colors <-randomcoloR::distinctColorPalette(
-  length(unique(act_words$character))
+character_levels <- act_words |>
+  group_by(character) |>
+  summarise(total = sum(total_words), .groups = "drop") |>
+  arrange(desc(total)) |>
+  pull(character)
+
+character_colors <- randomcoloR::distinctColorPalette(
+  length(character_levels)
 )
+
+names(character_colors) <- character_levels
 
 act_plot <- ggplot(
   act_words,
@@ -87,9 +103,7 @@ act_plot <- ggplot(
 ) +
   geom_col() +
   scale_fill_manual(
-    values = setNames(
-      character_colors,
-      unique(act_words$character)
+    values = character_colors,
     )
   ) + 
   labs(
