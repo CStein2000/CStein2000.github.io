@@ -36,7 +36,11 @@ hamlet <- hamlet |>
       regex("stage direction", ignore_case = TRUE)
     )
   ) |>
-  filter(!is.na(dialogue), !is.na(character))
+  filter(!is.na(dialogue), !is.na(character)) |>
+  mutate(
+    character = str_remove(character, ":$"),
+    character = str_trim(character)
+  )
 ```
 
 
