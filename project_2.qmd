@@ -103,6 +103,15 @@ act_plot <- ggplot(
 ggplotly(act_plot, tooltip = "text")
 ```
 
+```{r}
+hamlet |>
+  filter(str_detect(character, regex("Guildenstern", ignore_case = TRUE))) |>
+  distinct(character) |>
+  print()
+
+```
+
+
 #### Q1 Analysis + Results
 
 For Question 1, I used an interactive, plotly stacked bar graph to visualize the characters that speak the most (Hamlet) and the least (Guildenstern). Each bar represents one of the 5 acts in the play. The colors represent each character, and if you click on a character's name in the key the plot will isolate only their data. 
