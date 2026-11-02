@@ -21,6 +21,7 @@ This is a full text analysis project using dialogue from Shakespeare's play Haml
 #### Load/Clean Data
 ```{r}
 #| code-summary: "Cleaning data code"
+library(randomcoloR)
 library(tidyverse)
 library(forcats)
 library(stringr)
@@ -63,6 +64,11 @@ act_words <- hamlet_words |>
 #### Plot 1 (Stacked Bar Chart)
 ```{r}
 #| code-summary: "Creating the yapper visualization"
+# making the color differences between characters more visible
+character_colors <-randomcoloR::distinctColorPalette(
+  length(unique(act_words$character))
+)
+
 act_plot <- ggplot(
   act_words,
   aes(
@@ -77,6 +83,12 @@ act_plot <- ggplot(
   )
 ) +
   geom_col() +
+  scale_fill_manual(
+    values = setNames(
+      character_colors,
+      unique(act_words$character)
+    )
+  ) + 
   labs(
     title = "Who Speaks the Most in Each Act of Hamlet?",
     x = "Act",
