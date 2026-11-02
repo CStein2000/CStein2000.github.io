@@ -164,6 +164,53 @@ love_death <- hamlet |>
   )
 ```
 
+#### Lookahead
+```{r}
+love_you_pattern <-"\\blove\\b(?=\\s+you\\b)"
+
+love_you_count <- hamlet |>
+  mutate(
+    love_you = str_count(
+      str_to_lower(dialogue),
+      love_you_pattern
+    )
+  ) |>
+  group_by(character) |>
+  summarise(
+    total_love_you_pattern = sum(love_you, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  filter(total_love_you_pattern > 0) |>
+  arrange(desc(total_love_you_pattern))
+
+love_you_count
+
+```
+
+#### Lookbehind
+```{r}
+i_love_pattern <- "(?<=\\bi\\s)love\\b"
+
+i_love_count <- hamlet |>
+  mutate(
+    i_love = str_count(
+      str_to_lower(dialogue),
+      i_love_pattern
+    )
+  ) |>
+  group_by(character) |>
+  summarise(
+    total_i_love_pattern = sum(i_love, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  filter(total_i_love_pattern > 0) |>
+  arrange(desc(total_i_love_pattern))
+
+i_love_count
+
+```
+
+
 #### Plot 2 (Line Chart)
 ```{r}
 #| code-summary: "Line chart code"
