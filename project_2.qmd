@@ -104,7 +104,6 @@ act_plot <- ggplot(
   geom_col() +
   scale_fill_manual(
     values = character_colors,
-    )
   ) + 
   labs(
     title = "Who Speaks the Most in Each Act of Hamlet?",
