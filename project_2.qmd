@@ -38,8 +38,7 @@ hamlet <- hamlet |>
   ) |>
   filter(!is.na(dialogue), !is.na(character)) |>
   mutate(
-    character = str_remove(character, ":$"),
-    character = str_trim(character)
+    character = str_remove(str_trim(character), ":\\s*$"),
   )
 ```
 
