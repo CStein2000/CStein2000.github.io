@@ -64,13 +64,6 @@ act_words <- hamlet_words |>
   )
 ```
 
-```{r}
-act_words |>
-  filter(str_detect(character, regex("Guildenstern", ignore_case = TRUE))) |>
-  count(character)
-
-```
-
 
 #### Plot 1 (Stacked Bar Chart)
 ```{r}
@@ -116,13 +109,6 @@ act_plot <- ggplot(
 ggplotly(act_plot, tooltip = "text")
 ```
 
-```{r}
-hamlet |>
-  filter(str_detect(character, regex("Guildenstern", ignore_case = TRUE))) |>
-  distinct(character) |>
-  print()
-
-```
 
 
 #### Q1 Analysis + Results
