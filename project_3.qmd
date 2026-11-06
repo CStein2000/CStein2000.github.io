@@ -63,10 +63,41 @@ data("FederalistPapers")
 # view datasets in package
 data(package = "FederalistPapers")
 
+# combine data
+essay_data <- FederalistPapers |>
+    filter(
+        author == "Hamilton" | author == "Madison",
+        str_to_lower(disputed) == "no"
+    ) |>
+    arrange(paper, line_number) |>
+    group_by(paper, author, title) |>
+    summarize(
+        essay_text = paste(text, collapse = " "),
+        .groups = "drop"
+    )
+
+head(essay_data)
+table(essay_data$author)
 ```
 
 
+#### Separate all essays into individual sentences
 
+```{r}
+sentence_data <- essay_data |>
+    mutate(
+        sentences = map(
+            essay_text,
+            ~ str_split(.x, "(?<=[.1?})\\s+")[[1]]]
+            )
+        ) 
+    ) |>
+    unnest_longer(sentences, values_to = "sentence") |>
+
+
+
+
+```
 
 
 
