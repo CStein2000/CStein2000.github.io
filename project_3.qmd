@@ -1,0 +1,82 @@
+---
+title: "The Federalist Paper Analysis"
+format: html
+description: |
+    Simulation Study Hypothesis Test: Short and Sweet, or Long-winded?
+
+author: C
+date: November 5, 2026
+format:
+   html:
+       code-fold: true
+       code-summary: "Show Code"
+       code-tools: true
+execute:
+ warning: false
+ message: false
+---
+
+## Context and Research Plan
+
+For this project, I decided to complete option A and conduct a hypothesis test simulation study. I will simulate behavior under the null hypothesis analyzing average sentence length of the main authors of the Federalist Papers (Alexander Hamilton and James Madison), which were 85 essays written between 1787-1788 under the pseudonym Publius. As a (former) politics major these papers are important to me, because I had to read all of them in Intro to American Government. For those who are not politics majors, the Federalist Papers were critical to public acceptance of the U.S. Constitution, leading to its eventual ratification. They were written to explain the Constitution and its benefits to the populace. *Note: Although there were three authors, because John Jay only wrote 5 essays he has been excluded from this study.
+
+I am investigating sentence length because it is one indication of writing style, as some people tend to write more "matter-of-fact" and to the point, while others may write "long, beautiful prose". For those that do not have the time or energy to read the Federalist Papers in their entirety (increasingly common in our 2026 society), I have constructed this analysis to determine the writing style of the authors. For those inspired, I hope this analysis may spark an interest in reading the actual texts. 
+
+
+#### Methods
+
+- I will measure the length of sentences by counting words per sentence through a permutation simulation.
+- Step 1: calculate average sentence length of each essay.
+- Step 2: compare the average sentence length per essay between Hamilton and Madison.
+- I will conduct a 2-sided permutation test with a significance level of 0.05 (industry standard in psychology research methods, which I am currently taking)
+
+
+#### Research Question
+
+- "Did the main authors of the Federalist Papers, Hamilton and Madison, write sentences of notably different average lengths?"
+
+
+#### Hypotheses
+
+- Null Hypothesis (H0): Hamilton and Madison wrote sentences of the same average length in their papers.
+- Alternative Hypothesis (H1): Hamilton and Madison wrote sentences of different average lengths in their papers.
+
+
+#### Data
+
+I've loaded the data from a public GitHub upload by Nicholas Horton.
+```{r}
+report_words_clean <- readr::read_csv('https://github.com/nicholasjhorton/FederalistPapers.git')
+```
+
+
+#### Load/Clean Data
+```{r}
+library(dplyr)
+library(ggplot2)
+library(purrr)
+library(stringr)
+library(tidyr)
+library(FederalistPapers)
+
+data("FederalistPapers")
+
+# view datasets in package
+data(package = "FederalistPapers")
+
+```
+
+
+
+
+
+
+
+
+## Full Citations
+
+[TidyTuesday resource](https://github.com/nicholasjhorton/FederalistPapers/) 
+This data is taken from a public upload by Nicholas Horton. 
+
+[Original data source](https://guides.loc.gov/federalist-papers/full-text) 
+This is a link to the Federalist Papers in full, from the official Library of Congress website.

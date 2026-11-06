@@ -18,6 +18,8 @@ website:
           text: Coffee Ratings
         - href: project_2.qmd
           text: Hamlet Linguistics
+        - href: project_3.qmd
+          text: Federalist Analysis
 
 format:
   html:

@@ -26,6 +26,8 @@ library(tidyverse)
 library(forcats)
 library(stringr)
 library(plotly)
+library(tidyr)
+library(dplyr)
 
 hamlet <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-09-17/hamlet.csv')
 
@@ -175,25 +177,30 @@ love_you_count
 
 #### Lookbehind
 ```{r}
-i_love_pattern <- "(?<=\\bi\\s)love\\b"
+behind_love_pattern <- "\\w+(?= love[sdr]?)"
 
-i_love_count <- hamlet |>
-  mutate(
-    i_love = str_count(
-      str_to_lower(dialogue),
-      i_love_pattern
-    )
-  ) |>
-  group_by(character) |>
-  summarise(
-    total_i_love_pattern = sum(i_love, na.rm = TRUE),
-    .groups = "drop"
-  ) |>
-  filter(total_i_love_pattern > 0) |>
-  arrange(desc(total_i_love_pattern))
+behind_love_words <- hamlet |>
+  filter(str_detect(str_to_lower(dialogue), behind_love_pattern)) |>
+  mutate(word = str_extract(str_to_lower(dialogue), behind_love_pattern)) |>
+  select(word, everything())
 
-i_love_count
-
+#complete bar chart
+behind_love_words |>
+  #slice_max(frequency, n = 15) |>
+ggplot(
+  aes(
+    #x = frequency,
+    x = word, #fct_reorder(word, frequency)
+  )) +
+  geom_bar(fill = "purple") +
+  labs(
+    title = "Words appearing before 'Love' in Hamlet",
+    x = "Frequency",
+    y = "Word"
+  ) +
+  theme_classic() +
+  theme(axis.text.y = element_text(size = 20)) + 
+  coord_flip()
 ```
 
 
