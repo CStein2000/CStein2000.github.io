@@ -40,7 +40,7 @@ hamlet <- hamlet |>
   ) |>
   filter(!is.na(dialogue), !is.na(character)) |>
   mutate(
-    character = str_remove_all(str_trim(character), ":\\s*$"),
+    character = str_remove_all(str_trim(character), ":\\s*$")
   )
 ```
 
@@ -101,7 +101,7 @@ act_plot <- ggplot(
 ) +
   geom_col() +
   scale_fill_manual(
-    values = character_colors,
+    values = character_colors
   ) + 
   labs(
     title = "Who Speaks the Most in Each Act of Hamlet?",
@@ -193,24 +193,25 @@ behind_love_words <- hamlet |>
 
 #complete bar chart
 behind_love_words |>
-  count(word, sort = TRUE)
+  count(word, sort = TRUE) |>
   #dont use slice_max(frequency, n = 15) |>
   head(15) |>
 ggplot(
   aes(
     #x = frequency,
-    x = reorder(word, n), #fct_reorder(word, frequency)
+    x = reorder(word, n)
   )) +
-  geom_col(fill = "purple", width = 0.7) +
+  geom_bar(fill = "purple", width = 0.7) +
   labs(
     title = "15 Most Common Words Appearing Before 'Love' in Hamlet",
     x = "Word",
     y = "Frequency"
   ) +
   theme_classic() +
-  theme(axis.text.y = element_text(size = 11, face = "bold", 
-  plot.title = element_text(size = 14, face = "bold"),
-  plot.margin = margin(15, 20, 15, 20)
+  theme(
+    axis.text.y = element_text(size = 11, face = "bold"), 
+    plot.title = element_text(size = 14, face = "bold"),
+    plot.margin = margin(15, 20, 15, 20)
   ) + 
   coord_flip()
 ```
