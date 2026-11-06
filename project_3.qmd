@@ -2,7 +2,7 @@
 title: "The Federalist Paper Analysis"
 description: |
     Simulation Study Hypothesis Test: Short and Sweet, or Long-winded?
-author: C
+author: Celina
 date: November 5, 2026
 format:
    html:
@@ -17,7 +17,7 @@ execute:
 
 ## Context and Research Plan
 
-For this project, I decided to complete option A and conduct a hypothesis test simulation study. I will simulate behavior under the null hypothesis analyzing average sentence length of the main authors of the Federalist Papers (Alexander Hamilton and James Madison), which were 85 essays written between 1787-1788 under the pseudonym Publius. As a (former) politics major these papers are important to me, because I had to read all of them in Intro to American Government. For those who are not politics majors, the Federalist Papers were critical to public acceptance of the U.S. Constitution, leading to its eventual ratification. They were written to explain the Constitution and its benefits to the populace. 
+For this project, I decided to complete option A and conduct a hypothesis test simulation study. I will simulate behavior under the null hypothesis analyzing average sentence length of the main authors of the Federalist Papers (Alexander Hamilton and James Madison), which were 85 essays written between 1787—1788 under the pseudonym Publius. As a (former) politics major these papers are important to me, because I had to read all of them in Intro to American Government. For those who are not politics majors, the Federalist Papers were critical to public acceptance of the U.S. Constitution, leading to its eventual ratification. They were written to explain the Constitution and its benefits to the populace. 
 
 **Note:** Although there were three authors, because John Jay only wrote 5 essays he has been excluded from this study.
 
@@ -25,21 +25,23 @@ I am investigating sentence length because it is one indication of writing style
 
 **Research Question:** Did the main authors of the Federalist Papers, Hamilton and Madison, write sentences of notably different average lengths?
 
+**Variables:** The explanatory variable is the author, and the response variable is the average number of words per sentence in each essay (with each essay representing one observation). I am interested in this analysis because I hope to determine if the variation in sentence length between Hamilton and Madison may give away the author's identity, or provide insight into differences in their writing styles. 
+
 
 #### Methods
 
 - I will measure the length of sentences by counting words per sentence through a permutation simulation.
 - Step 1: calculate average sentence length of each essay.
 - Step 2: compare the average sentence length per essay between Hamilton and Madison.
-- I will conduct a 2-sided permutation test with a significance level of 0.05 (α = 0.005), which is a commonly used threshold for statistical and psychology research.
+- I will conduct a 2-sided permutation test with a significance level of 0.05 (α = 0.05), which is a commonly used threshold for statistical and psychology research.
 
 **Note:** In this analysis each essay is an individual observation. I first calculate the average sentence length within each essay, then compare the average sentence lengths between Hamilton and Madison's essays. 
 
 
 ### Hypotheses
 
-- **Null Hypothesis (H0):** Hamilton and Madison wrote sentences of the same average length in their papers.
-- **Alternative Hypothesis (H1):** Hamilton and Madison wrote sentences of different average lengths in their papers.
+- **Null Hypothesis (H0):** The population mean for average sentence length is the same for Hamilton's and Madison's essays.
+- **Alternative Hypothesis (H1):** The population mean for average sentence length is different for Hamilton's and Madison's essays.
 
 
 #### Data Cleaning and Preparation
@@ -203,7 +205,7 @@ ggplot(
 ```
 
 **Boxplot Description:**
-The boxplot compares the average sentence lengths of Hamilton's and Madison's essays, with each point representing a single essay. The box illustrates the average sentence length per author, indicating the median and spread of the data to identify who wrote longer senttences on average. While there are some differences, overall distributions appear similar. 
+The boxplot compares the average sentence lengths of Hamilton's and Madison's essays, with each point representing a single essay. The box illustrates the median and spread of average sentences lengths per author to identify who wrote longer sentences on average. While there are some differences, overall distributions appear similar. 
 
 
 #### Observed Difference
@@ -286,7 +288,7 @@ ggplot(null_data, aes(x = difference)) +
 ```
 
 **Histogram Description:**
-The histogram illustrates the distribution of differences in average sentence length from 5,000 simulations under the null hypothesis. For each simulation, the author labels were randomly shuffled while maintaining the original number of essays written by each author. This allowed me to identify the difference in average sentence length that may occur simply by chance if both Hamilton and Madison had similar writing styes. 
+The histogram illustrates the distribution of differences in average sentence length from 5,000 simulations under the null hypothesis. For each simulation, the author labels were randomly shuffled while maintaining the original number of essays written by each author. This allowed me to identify the difference in average sentence length that may occur simply by chance if both Hamilton and Madison had similar writing styles. 
 
 The x-axis represents the difference in average words per sentence, while the y-axis shows the number of simulations which produced each difference. The green dashed lines represent the observed difference and its opposite, visualizing the two-sided permutation test. The observed difference falls well within the range of simulated differences, which indicates that it is not unusual under the null hypothesis (which is consistent with its large p-value of 0.86).
 
@@ -295,7 +297,7 @@ The x-axis represents the difference in average words per sentence, while the y-
 ## Conclusion:
 The results of my analysis indicated that Hamilton had an average sentence length of 32 words, and Madison wrote an average of 33 words per sentence. The observed difference (Hamilton - Madison) was -0.2016, which shows that Madison wrote slightly longer sentences on average. 
 
-I conducted a two-sided permutation test using 5,000 simulations, which produced a p-value of 0.86. This failed to reject the null hypothesis since the p-value was much higher than my significance level (0.05). While this analysis cannot prove that the authors have similar writing styles, it illustrates that there is no statisticaly significant evidence of different writing style based solely on average sentence length.
+I conducted a two-sided permutation test using 5,000 simulations, which produced a p-value of 0.86. This failed to reject the null hypothesis since the p-value was much higher than my significance level (0.05). While this analysis cannot prove that the authors have similar writing styles, it illustrates that there is no statistically significant evidence of different writing style based solely on average sentence length.
 
 **Methodological Limitations:**
 According to this dataset, out of the 85 essays making up the Federalist Papers, Hamilton wrote 51 essays, and Madison wrote 14 undisputed essays. The dataset indicated that 15 of the essays were disputed, so they were not included in this analysis. Additionally, the 5 by John Jay are not included in this analysis.
@@ -303,7 +305,7 @@ According to this dataset, out of the 85 essays making up the Federalist Papers,
 
 
 ## Final Summary:
-For this project, I analyzed the writing patterns for Hamilton's and Madison's essays that make up the Federalist Papers. To do this, I cleaned the original data (uploaded by Nicholas Horton), evaluated average sentence length per paper and per author, ran the simulation 5,000 times under the null hypothesis, using the simulation function and mapping, visualizing my findings through a boxplot and histogram. I also calculated the observed difference and p-value for my simulation to determine if there was statistically significant evidence to reject the null (p < 0.05), which turned out to be 0.86 (much larger than 0.05). This indicates there was not a significant difference between the sentence length of the two authors.
+For this project, I analyzed the writing patterns for Hamilton's and Madison's essays that make up the Federalist Papers. I cleaned the original dataset, evaluated average sentence length for each essay, and developed a simulation function to conduct a two-sided permutation test using 5,000 simulations. I also calculated the observed difference and p-value for my simulation to determine if there was statistically significant evidence to reject the null (p < 0.05), which turned out to be 0.86 (much larger than 0.05). This indicates there was not a significant difference between the sentence length of the two authors.
 
 
 
