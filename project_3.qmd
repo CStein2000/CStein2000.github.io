@@ -1,9 +1,7 @@
 ---
 title: "The Federalist Paper Analysis"
-format: html
 description: |
     Simulation Study Hypothesis Test: Short and Sweet, or Long-winded?
-
 author: C
 date: November 5, 2026
 format:
@@ -11,6 +9,7 @@ format:
        code-fold: true
        code-summary: "Show Code"
        code-tools: true
+       toc: true
 execute:
  warning: false
  message: false
