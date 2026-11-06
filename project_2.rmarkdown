@@ -1,0 +1,301 @@
+---
+title: "The Speeches of Hamlet"
+description: |
+    Linguistic Analysis of Hamlet text.
+
+author: Celina
+date: October 14, 2026
+format:
+   html:
+       code-fold: true
+       code-summary: "Show Code"
+       code-tools: true
+execute:
+ warning: false
+ message: false
+---
+## Hamlet Linguistic Analysis
+
+This is a full text analysis project using dialogue from Shakespeare's play Hamlet. I analyze character strings to answer the following research questions: 1. Who is the biggest yapper (i.e. who talks the most) in Hamlet? 2. How does language about love compare to language about death?
+
+#### Load/Clean Data
+```{r}
+#| code-summary: "Cleaning data code"
+library(randomcoloR)
+library(tidyverse)
+library(forcats)
+library(stringr)
+library(plotly)
+library(tidyr)
+library(dplyr)
+
+hamlet <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-09-17/hamlet.csv')
+
+hamlet <- hamlet |>
+  filter(
+    !str_detect(
+      character,
+      regex("stage direction", ignore_case = TRUE)
+    )
+  ) |>
+  filter(!is.na(dialogue), !is.na(character)) |>
+  mutate(
+    character = str_remove_all(str_trim(character), ":\\s*$"),
+  )
+```
+
+
+### Question 1: Who has the biggest yapper energy out of all Hamlet characters?
+```{r}
+#| code-summary: "Creating the yapper database"
+# Count words in each phrase.
+hamlet_words <- hamlet |>
+  mutate(
+    word_count = str_count(
+      dialogue,
+      "\\b[[:alpha:]]+\\b"
+    )
+  )
+
+# Add words per character, per act. 
+act_words <- hamlet_words |>
+  group_by(act, character) |>
+  summarise(
+    total_words = sum(word_count),
+    .groups = "drop"
+  )
+```
+
+
+#### Plot 1 (Stacked Bar Chart)
+```{r}
+#| code-summary: "Creating the yapper visualization"
+# making the color differences between characters more visible
+character_levels <- act_words |>
+  group_by(character) |>
+  summarise(total = sum(total_words), .groups = "drop") |>
+  arrange(desc(total)) |>
+  pull(character)
+
+set.seed(100)
+
+character_colors <- randomcoloR::distinctColorPalette(
+  length(character_levels)
+)
+
+names(character_colors) <- character_levels
+
+act_plot <- ggplot(
+  act_words,
+  aes(
+    x = act,
+    y = total_words,
+    fill = fct_reorder(character, -total_words, .fun = sum),
+    text = paste0(
+      "Act: ", act,
+      "<br>Character: ", character,
+      "<br>Words: ", total_words
+    )
+  )
+) +
+  geom_col() +
+  scale_fill_manual(
+    values = character_colors,
+  ) + 
+  labs(
+    title = "Who Speaks the Most in Each Act of Hamlet?",
+    x = "Act",
+    y = "Total Words Spoken",
+    fill = "Character"
+  ) +
+  theme_gray()
+
+ggplotly(act_plot, tooltip = "text")
+```
+
+
+
+#### Q1 Analysis + Results
+
+For Question 1, I used an interactive, plotly stacked bar graph to visualize the characters that speak the most (Hamlet) and the least (Guildenstern). Each bar represents one of the 5 acts in the play. The colors represent each character, and if you click on a character's name in the key the plot will isolate only their data. 
+
+From the bar graphs, you can see that the top 5 biggest yappers are all male characters (Hamlet, King Claudius, Lord Polonius, Horatio, and Laertes), followed by Ophelia in 6th place. What does it say about the focus of this piece that so many lines are spoken by the same 5 men?
+
+
+
+### Question 2: Does love or death conquer all?
+```{r}
+#| code-summary: "Does this play care more about love or revenge (through death)?"
+love_pattern <- "\\b(love|loves|loved|loving|lover|lovers)\\b"
+
+death_pattern <- "\\b(death|dead|die|dies|died|dying|kill|kills|killed|killing)\\b"
+
+love_death <- hamlet |>
+  mutate(
+    love_count = str_count(
+      str_to_lower(dialogue),
+      love_pattern
+    ),
+    death_count = str_count(
+      str_to_lower(dialogue),
+      death_pattern
+    )
+  ) |>
+  group_by(act) |>
+  summarise(
+    Love = sum(love_count, na.rm = TRUE),
+    Death = sum(death_count, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  pivot_longer(
+    cols = c(Love, Death),
+    names_to = "Theme",
+    values_to = "Occurrences"
+  )
+```
+
+#### Lookahead
+```{r}
+love_you_pattern <-"\\blove\\b(?=\\s+you\\b)"
+
+love_you_count <- hamlet |>
+  mutate(
+    love_you = str_count(
+      str_to_lower(dialogue),
+      love_you_pattern
+    )
+  ) |>
+  group_by(character) |>
+  summarise(
+    total_love_you_pattern = sum(love_you, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  filter(total_love_you_pattern > 0) |>
+  arrange(desc(total_love_you_pattern))
+
+love_you_count
+
+```
+
+#### Lookbehind
+```{r}
+behind_love_pattern <- "\\w+(?= love[sdr]?)"
+
+behind_love_words <- hamlet |>
+  filter(str_detect(str_to_lower(dialogue), behind_love_pattern)) |>
+  mutate(word = str_extract(str_to_lower(dialogue), behind_love_pattern)) |>
+  select(word, everything())
+
+#complete bar chart
+behind_love_words |>
+  count(word, sort = TRUE)
+  #dont use slice_max(frequency, n = 15) |>
+  head(15) |>
+ggplot(
+  aes(
+    #x = frequency,
+    x = reorder(word, n), #fct_reorder(word, frequency)
+  )) +
+  geom_col(fill = "purple", width = 0.7) +
+  labs(
+    title = "15 Most Common Words Appearing Before 'Love' in Hamlet",
+    x = "Word",
+    y = "Frequency"
+  ) +
+  theme_classic() +
+  theme(axis.text.y = element_text(size = 11, face = "bold", 
+  plot.title = element_text(size = 14, face = "bold"),
+  plot.margin = margin(15, 20, 15, 20)
+  ) + 
+  coord_flip()
+```
+
+
+#### Plot 2 (Line Chart)
+```{r}
+#| code-summary: "Line chart code"
+love_death_plot <- ggplot(
+  love_death,
+  aes(
+    x = act,
+    y = Occurrences,
+    color = Theme,
+    group = Theme,
+    text = paste0(
+      "Act: ", act,
+      "<br>Theme: ", Theme,
+      "<br>Occurrences: ", Occurrences
+    )
+  )
+) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  labs(
+    title = "Love vs. Death in Hamlet",
+    x = "Act",
+    y = "Number of Word Occurrences",
+    color = "Theme"
+  ) +
+  theme_gray()
+
+ggplotly(love_death_plot, tooltip = "text")
+```
+
+```{r}
+#| code-summary: "Summary table code"
+
+act_totals <- love_death |>
+  group_by(act, Theme) |>
+  summarise(
+    Total_Occurrences = sum(Occurrences),
+    .groups = "drop"
+  ) |>
+  pivot_wider(
+    names_from = Theme,
+    values_from = Total_Occurrences,
+    values_fill = 0
+  )
+
+knitr::kable(
+  act_totals,
+  caption = "Love and Death Word Occurrences by Act"
+)
+
+overall_totals <- love_death |>
+  group_by(Theme) |>
+  summarise(
+    Total_Occurrences = sum(Occurrences),
+    .groups = "drop"
+  )
+
+knitr::kable(
+  overall_totals,
+  caption = "Total Love and Death Word Occurrences in Hamlet"
+)
+```
+
+#### Q2 Analysis + Results
+
+This analysis compares the frequency of love and death related words across Hamlet's 5 acts. It counts related terms using word patterns using an interactive plotly line chart.
+
+Act 1 contains an equal amount of love and death (15 occurrences each). However, the theme of love quickly rises throughout Acts II and III. In Act II, the theme of death is at its lowest, but it peaks around the climax of the play in Act IV. Themes of love peak in Act III, right before Ophelia's death. 
+
+I think its interesting how the theme of love peaks and then drops right before the same happens with the theme of death. I wonder if this could indicate the central focus of the story on violence/death > romance, seeing how taking action/revenge in the face of corruption is central to the climax of the piece, while Hamlet's romance with Ophelia serves to build up to this turning point. 
+
+
+
+## Conclusion
+
+While I didn't go into this project with gender in mind, I found that my data inadvertently highlights disparities between the amount of speech male versus female characters have (see Plot 1). Additionally, the fact that there are 10 more occurrences of death than there are of love indicates a greater focus on the theme of death in the play Hamlet.
+
+
+
+## Complete Citations
+[TidyTuesday resource](https://github.com/rfordatascience/tidytuesday/blob/main/data/2024/2024-09-17/readme.md)
+The data was uploaded to the TidyTuesday database by Nicola Rennie. Find out more about her work here: https://github.com/nrennie
+
+
+[Original datasource](https://shakespeare.mit.edu/)
+The original data sources is Shakespeare's works, which can be found on MIT's website here.
+
+
