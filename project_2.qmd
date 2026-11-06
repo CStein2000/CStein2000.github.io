@@ -77,6 +77,8 @@ character_levels <- act_words |>
   arrange(desc(total)) |>
   pull(character)
 
+set.seed(1776)
+
 character_colors <- randomcoloR::distinctColorPalette(
   length(character_levels)
 )
