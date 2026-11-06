@@ -45,6 +45,7 @@ hamlet <- hamlet |>
 ```
 
 
+
 ### Question 1: Who has the biggest yapper energy out of all Hamlet characters?
 ```{r}
 #| code-summary: "Creating the yapper database"
@@ -67,6 +68,7 @@ act_words <- hamlet_words |>
 ```
 
 
+
 #### Plot 1 (Stacked Bar Chart)
 ```{r}
 #| code-summary: "Creating the yapper visualization"
@@ -77,8 +79,7 @@ character_levels <- act_words |>
   arrange(desc(total)) |>
   pull(character)
 
-set.seed(100)
-
+set.seed(102)
 character_colors <- randomcoloR::distinctColorPalette(
   length(character_levels)
 )
@@ -154,6 +155,8 @@ love_death <- hamlet |>
   )
 ```
 
+
+
 #### Lookahead
 ```{r}
 love_you_pattern <-"\\blove\\b(?=\\s+you\\b)"
@@ -176,6 +179,8 @@ love_you_count <- hamlet |>
 love_you_count
 
 ```
+
+
 
 #### Lookbehind
 ```{r}
@@ -209,6 +214,7 @@ ggplot(
   ) + 
   coord_flip()
 ```
+
 
 
 #### Plot 2 (Line Chart)
