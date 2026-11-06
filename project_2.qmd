@@ -77,7 +77,7 @@ character_levels <- act_words |>
   arrange(desc(total)) |>
   pull(character)
 
-set.seed(1776)
+set.seed(100)
 
 character_colors <- randomcoloR::distinctColorPalette(
   length(character_levels)
@@ -188,20 +188,25 @@ behind_love_words <- hamlet |>
 
 #complete bar chart
 behind_love_words |>
-  #slice_max(frequency, n = 15) |>
+  count(word, sort = TRUE)
+  #dont use slice_max(frequency, n = 15) |>
+  head(15) |>
 ggplot(
   aes(
     #x = frequency,
-    x = word, #fct_reorder(word, frequency)
+    x = reorder(word, n), #fct_reorder(word, frequency)
   )) +
-  geom_bar(fill = "purple") +
+  geom_col(fill = "purple", width = 0.7) +
   labs(
-    title = "Words appearing before 'Love' in Hamlet",
-    x = "Frequency",
-    y = "Word"
+    title = "15 Most Common Words Appearing Before 'Love' in Hamlet",
+    x = "Word",
+    y = "Frequency"
   ) +
   theme_classic() +
-  theme(axis.text.y = element_text(size = 20)) + 
+  theme(axis.text.y = element_text(size = 11, face = "bold", 
+  plot.title = element_text(size = 14, face = "bold"),
+  plot.margin = margin(15, 20, 15, 20)
+  ) + 
   coord_flip()
 ```
 
