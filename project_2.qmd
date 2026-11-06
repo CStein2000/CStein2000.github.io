@@ -184,24 +184,29 @@ love_you_count
 
 #### Lookbehind
 ```{r}
-behind_love_pattern <- "\\w+(?= love[sdr]?)"
+behind_love_pattern <- "[[:alpha:]']+(?= love[sdr]?)" #"\\w+(?= love[sdr]?)" didn't allow apostrophes
 
 behind_love_words <- hamlet |>
-  filter(str_detect(str_to_lower(dialogue), behind_love_pattern)) |>
-  mutate(word = str_extract(str_to_lower(dialogue), behind_love_pattern)) |>
-  select(word, everything())
+  mutate(
+    words = str_extract_all(
+      str_to_lower(dialogue), 
+      behind_love_pattern
+    )
+  ) |>
+  unnest(words)
 
 #complete bar chart
 behind_love_words |>
-  count(word, sort = TRUE) |>
+  count(words, sort = TRUE) |>
   #dont use slice_max(frequency, n = 15) |>
   head(15) |>
 ggplot(
   aes(
     #x = frequency,
-    x = reorder(word, n)
+    x = reorder(words, n),
+    y = n
   )) +
-  geom_bar(fill = "purple", width = 0.7) +
+  geom_col(fill = "purple", width = 0.7) +
   labs(
     title = "15 Most Common Words Appearing Before 'Love' in Hamlet",
     x = "Word",
