@@ -163,6 +163,13 @@ simulate_null <- function(data) {
 ```
 
 
+```{r}
+FederalistPapers |>
+  filter(author == "Madison") |>
+  distinct(paper, disputed) |>
+  count(disputed)
+```
+
 #### Running the simulation
 ```{r}
 set.seed(47)
@@ -202,7 +209,7 @@ Graph Description:
 The boxplot above compares the average sentence lengths for both Hamilton and Madison across their Federalist papers, with each point representing a single essay. This allows us to analyze who wrote longer sentences in their essays, on average. 
 
 
-#### Observed Difference and P-Value
+#### Observed Difference
 ```{r}
 author_means <- essay_lengths |>
     group_by(author) |>
@@ -228,7 +235,13 @@ madison_avg <- subset(
 observed_difference <- hamilton_avg - madison_avg
 
 observed_difference
+```
 
+Note: Since the observed difference is negative, it indicates that Madison wrote longer sentences on average. 
+
+
+#### P-Value:
+```{r}
 #calculate p-value
 p_value <- (
     sum(abs(null_differences) >= abs(observed_difference)) + 1
@@ -279,7 +292,7 @@ The x-axis shows the difference in average words per sentence, while the y-axis 
 
 
 #### Conclusion:
-The results of my analysis indicated that Hamilton had an average sentence length of _____ words, and Madison wrote and average of _____ words per sentence. The observed difference between the two was ____. Out of the ___ Federalist Papers, Hamilton wrote ____ and Madison wrote ____ (the ____ by John Jay are not included in this analysis). My permutation test (comparing average sentence length across essays) produced a p-value of 0.86, which fails to reject the null.
+The results of my analysis indicated that Hamilton had an average (mean) sentence length of 32 words, and Madison wrote and average of 33 words per sentence. The observed difference between the two was -0.2016, with Madison having the longer sentences on average. Out of the 85 essays making up the Federalist Papers, Hamilton wrote 51 and Madison wrote ____ (the 5 by John Jay are not included in this analysis). My permutation test (comparing average sentence length across essays) produced a p-value of 0.86, which fails to reject the null hypothesis.
 
 
 ## Final Summary:
