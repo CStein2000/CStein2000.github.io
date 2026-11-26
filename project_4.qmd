@@ -1,7 +1,7 @@
 ---
-title: "Mass Surveilance and the Social Impact of Flock Technology"
+title: "Mass Surveilance and the Social Impact of Flock Safety Technology"
 description: |
-    Data Science Ethics Essay: Flock Technology surveilance and San Diego public policy. 
+    Data science ethics essay: Flock Safety surveilance and San Diego policy reform. 
 author: Celina
 date: November 25, 2026
 format:
@@ -15,11 +15,10 @@ execute:
  message: false
 ---
 
-## Data Science Ethics Blog
-
 #### 1. Ethical Dilemma
 
 The ethical dilemma I choose to study is the usage of Flock's cameras for license plate recognition. Founded in 2017, Flock Group Inc. uses AI-powered search software and cameras to scan vehicles in all 50 states (Flock Safety, 2026). In the following essay, I analyze Chad Marlow's ACLU article to gain insight into the criticism of Flock's data collection and data usage. Additionally, I draw from Christopher Armenta's article published in The Guardian to better understand the reasoning behind the San Diego City Council's recent vote to end their contract with Flock Safety.
+
 
 
 #### 2. Describe the example / scenario as if to someone who is not at all familiar with the setting. In particular, it should be clear both what is the data science component and what is the ethical dilemma.
@@ -29,10 +28,12 @@ As a company, Flock Safety operates "more than 120,000 automatic license plate r
 Flock cameras have recently faced public backlash due to concerns over their data retention policy and a historical misuse by local police forces. In his article published in The Guardian, Christopher Armenta discusses how public concern over immigration enforcement activities using Flock cameras has grown over recent months, in addition to instances of surveilling police misconduct and the daily life of a domestic violence survivor (Armenta, 2026). The concerns of San Diego citizens on data privacy and risks of deportation eventually led to the San Diego City Council's unanimous vote to terminate its contract with Flock Safety on November 16th of this year.
 
 
+
 #### 3. Respond to at least 4 of the items below (from the list of questions or from the Data Values and Principles manifesto). Include four separate paragraphs that explain both the issue (e.g., consent) and how the issue played out in the data science example. Note: totally fine if there are items that were done well in your example.
 
-1. What is the permission structure for using the data? Was it followed?
+1. Were the data made publicly available? Why? How? On what platform?
 
+Flock cameras are not made publicly available. However, their data is available to certain law enforcement organizations, and like all other cloud-based systems are susceptible to hacking/accidental exposures. A concern Marlow brought up was that "if 'Evidence Mode' triggers the retention of any ALPR data that is searched, then the new mode could indefinitely retain all the ALPR data Flock collects and shares nationally" (2016). This would leave people's private location data open to search and collection from the Flock database for an indefinite period of time after capturing the images.
 
 2. Principle 11: "Protect the privacy and security of individuals represented in our data."
 
@@ -40,7 +41,12 @@ Drawing from the Data Values and Principles Manifesto, Flock addresses principle
 
 3. What was the consent structure for recruiting participants? Were the participants aware of the ways their data would be used for research? Was informed consent possible? Can you provide informed consent for applications that are yet foreseen?
 
+There seems to be no consent structure for "recruiting" participants, as Flock's business model mainly operates under an assumption of implied consent. People drive their cars in public spaces, and Flock operates under the doctrine that vehicles have no reasonable expectation of privacy because of this. In the case of Flock Safety, participants are not aware that their data would be used and retrained, and informed consent was not pursued for current or future cases of data collection. 
+
 4. Is the data being used in unintended ways to the original study?
+
+While this case study is not a traditional scientific study, the data is being used in ways that do not directly relate to helping law enforcement solve crimes. Flock Safety has faced criticism for tracking non-consenting individuals as a form of unwarranted mass surveillance, and people have expressed concerns regarding the "crackdown" of federal immigration enforcement (Armenta, 2026). Armenta also discusses the public unease surrounding the police department's "using the readers during an internal investigation" (2026). Ultimately, while proponents of Flock cameras argue for their necessity as a law enforcement tool, the cameras' usage in both public and internal location surveillance makes citizens uneasy about the increasing lack of privacy afforded to people in public spaces. 
+
 
 
 #### 4. Given what you described in #3 (above), summarize by explaining why it matters. Who benefits? Who is neglected or harmed? Were the ethical violations in the interest of profit? Surveillance? Power?
@@ -48,7 +54,7 @@ Drawing from the Data Values and Principles Manifesto, Flock addresses principle
 Ultimately, the public outcry over Flock Safety's technology is a prime example of how policy can be used to determine someone's right to their data. At the end of the day, Flock safety is a for-profit company that has faced recent scrutiny for what many are calling "its mass government surveillance product" (Marlow, 2026). The lack of clarity surrounding who can request and use Flock's data leaves the populace confused about their data rights. Informed consent was nearly impossible due to the nature of Flock's project (as a tool for public surveillance). This led to a situation where people had no control over how their data was collected or when it was used. According to Marlow, although Flock has attempted to change its policy surrounding data access to "provide more local control,” in practice their security measures did little to prevent unnecessary searches. 
 
 
-#### References
+### References
 Armenta, C. (n.d.). San Diego City Council votes to end Flock Safety contract. The UCSD Guardian. Retrieved November 25, 2026, from https://ucsdguardian.org/2026/11/23/san-diego-city-council-votes-to-end-flock-safety-contract/
 
 Flock Safety. (n.d.). Retrieved November 25, 2026, from https://www.flocksafety.com
