@@ -75,5 +75,33 @@
     "title": "Mass Surveilance and the Social Impact of Flock Technology",
     "section": "",
     "text": "The ethical dilemma I chose to study is the usage of Flock’s cameras for license plate recognition. Founded in 2017, Flock Group Inc. uses AI-powered search software and cameras to scan vehicles in all 50 states (Flock Safety). I used Chad Marlow’s article “Despite ‘New’ Updates, Flock’s Creepy Cameras Remain Major Civil Liberties Threat” to gain insight into the criticism of Flock’s data collection and data usage. Additionally, I drew from Christopher Armenta’s article published in The Guardian to better understand the impacts of the San Diego City Council’s recent vote to end their contract with Flock Safety.\n\nThank you!\n\n\nArmenta, C. (n.d.). San Diego City Council votes to end Flock Safety contract. The UCSD Guardian. Retrieved November 25, 2026, from https://ucsdguardian.org/2026/11/23/san-diego-city-council-votes-to-end-flock-safety-contract/\nFlock Safety. (n.d.). Retrieved November 25, 2026, from https://www.flocksafety.com\nMarlow, C. (2026, August 13). Flock’s Cameras Remain Civil Liberties Threat Despite Updates. American Civil Liberties Union. https://www.aclu.org/news/privacy-technology/tracking-alpr-cameras/despite-new-updates-flocks-creepy-cameras-remain-major-civil-liberties-threat"
+  },
+  {
+    "objectID": "tidyanalysis2.html",
+    "href": "tidyanalysis2.html",
+    "title": "What Makes a Highly-Rated Cup of Coffee?",
+    "section": "",
+    "text": "This analysis examines coffee ratings based on data from TidyTuesday (2020-07-07). This is an older dataset that contains variables for various coffee characteristics, and in my analysis I will investigate which of these are most strongly correlated with a coffee’s overall rating.\n\n\n\ncoffee_ratings &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-07-07/coffee_ratings.csv')\n\n\n\n\n\ncoffee_characteristics &lt;- coffee_ratings |&gt;\n  dplyr::select(\n    total_cup_points,\n    aroma,\n    flavor,\n    aftertaste,\n    acidity,\n    body,\n    balance,\n    uniformity,\n    clean_cup,\n    sweetness,\n    cupper_points\n  )\n\n\ncorrelations &lt;- coffee_characteristics |&gt;\n  cor(use = \"complete.obs\") |&gt;\n  as.data.frame() |&gt;\n  dplyr::select(total_cup_points) |&gt;\n  dplyr::rename(correlation = total_cup_points) |&gt;\n  tibble::rownames_to_column(\"characteristic\") |&gt;\n  dplyr::filter(characteristic != \"total_cup_points\") |&gt;\n  dplyr::arrange(correlation)\n\n\n\n\n\nlibrary(ggplot2)\nggplot(\n  correlations,\n  aes(\n    x = correlation,\n    y = reorder(characteristic, correlation)\n  )\n) +\n  geom_col(fill = \"purple\") +\n  labs(\n    title = \"Which Characteristics Relate Most to Overall Coffee Rating?\",\n    subtitle = \"Correlation with total cupper points\",\n    x = \"Correlation with total cupper points\",\n    y = \"Coffee characteristic\"\n  ) +\n  theme_minimal()"
+  },
+  {
+    "objectID": "tidyanalysis2.html#coffee-ratings",
+    "href": "tidyanalysis2.html#coffee-ratings",
+    "title": "What Makes a Highly-Rated Cup of Coffee?",
+    "section": "",
+    "text": "This analysis examines coffee ratings based on data from TidyTuesday (2020-07-07). This is an older dataset that contains variables for various coffee characteristics, and in my analysis I will investigate which of these are most strongly correlated with a coffee’s overall rating.\n\n\n\ncoffee_ratings &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-07-07/coffee_ratings.csv')\n\n\n\n\n\ncoffee_characteristics &lt;- coffee_ratings |&gt;\n  dplyr::select(\n    total_cup_points,\n    aroma,\n    flavor,\n    aftertaste,\n    acidity,\n    body,\n    balance,\n    uniformity,\n    clean_cup,\n    sweetness,\n    cupper_points\n  )\n\n\ncorrelations &lt;- coffee_characteristics |&gt;\n  cor(use = \"complete.obs\") |&gt;\n  as.data.frame() |&gt;\n  dplyr::select(total_cup_points) |&gt;\n  dplyr::rename(correlation = total_cup_points) |&gt;\n  tibble::rownames_to_column(\"characteristic\") |&gt;\n  dplyr::filter(characteristic != \"total_cup_points\") |&gt;\n  dplyr::arrange(correlation)\n\n\n\n\n\nlibrary(ggplot2)\nggplot(\n  correlations,\n  aes(\n    x = correlation,\n    y = reorder(characteristic, correlation)\n  )\n) +\n  geom_col(fill = \"purple\") +\n  labs(\n    title = \"Which Characteristics Relate Most to Overall Coffee Rating?\",\n    subtitle = \"Correlation with total cupper points\",\n    x = \"Correlation with total cupper points\",\n    y = \"Coffee characteristic\"\n  ) +\n  theme_minimal()"
+  },
+  {
+    "objectID": "tidyanalysis2.html#results",
+    "href": "tidyanalysis2.html#results",
+    "title": "What Makes a Highly-Rated Cup of Coffee?",
+    "section": "Results",
+    "text": "Results\nWhile flavor and aftertaste were shown to have the highest correlation with total cupper points recieved, all 10 of the coffee characteristics played a role in the overall coffee rating."
+  },
+  {
+    "objectID": "tidyanalysis2.html#complete-citations",
+    "href": "tidyanalysis2.html#complete-citations",
+    "title": "What Makes a Highly-Rated Cup of Coffee?",
+    "section": "Complete Citations",
+    "text": "Complete Citations\nTidyTuesday resource The data was uploaded to the TidyTuesday repository by Jon Harmon.\nOriginal data source The original data can be found on James LeDoux’s github. LeDoux is a Buzzfeed Data Scientist who created this database based on reviews of arabica and robusta coffee beans from the Coffee Quality Institute’s trained reviewers."
   }
 ]
