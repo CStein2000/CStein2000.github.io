@@ -1,0 +1,31 @@
+---
+title: "Mass Surveilance and the Social Impact of Flock Technology"
+description: |
+    Data Science Ethics Essay: Flock Technology surveilance and San Diego public policy. 
+author: Celina
+date: November 25, 2026
+format:
+   html:
+       code-fold: true
+       code-summary: "Show Code"
+       code-tools: true
+       toc: true
+execute:
+ warning: false
+ message: false
+---
+
+## Data Science Ethics Blog
+
+1. 
+The ethical dilemma I chose to study is the usage of Flock's cameras for license plate recognition. Founded in 2017, Flock Group Inc. uses AI-powered search software and cameras to scan vehicles in all 50 states (Flock Safety). I used Chad Marlow's article "Despite 'New' Updates, Flock's Creepy Cameras Remain Major Civil Liberties Threat" to gain insight into the criticism of Flock's data collection and data usage. Additionally, I drew from Christopher Armenta's article published in The Guardian to better understand the impacts of the San Diego City Council's recent vote to end their contract with Flock Safety. 
+
+
+
+
+#### References
+Armenta, C. (n.d.). San Diego City Council votes to end Flock Safety contract. The UCSD Guardian. Retrieved November 25, 2026, from https://ucsdguardian.org/2026/11/23/san-diego-city-council-votes-to-end-flock-safety-contract/
+
+Flock Safety. (n.d.). Retrieved November 25, 2026, from https://www.flocksafety.com
+
+Marlow, C. (2026, August 13). Flock’s Cameras Remain Civil Liberties Threat Despite Updates. American Civil Liberties Union. https://www.aclu.org/news/privacy-technology/tracking-alpr-cameras/despite-new-updates-flocks-creepy-cameras-remain-major-civil-liberties-threat

@@ -20,6 +20,8 @@ website:
           text: Hamlet Linguistics
         - href: project_3.qmd
           text: Federalist Analysis
+        - href: Ethics_Essay.qmd
+          text: Data Science Ethics Blog
 
 format:
   html:
